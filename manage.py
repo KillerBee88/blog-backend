@@ -3,6 +3,9 @@
 import os
 import sys
 
+from sensive_blog.settings import BASE_DIR
+
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sensive_blog.settings")
     try:
@@ -21,3 +24,7 @@ if __name__ == "__main__":
             )
         raise
     execute_from_command_line(sys.argv)
+
+
+STATIC_URL = '/static/hero-banner.png'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]

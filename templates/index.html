@@ -47,7 +47,7 @@
     <section class="mb-30px">
       <div class="container">
         <div class="hero-banner">
-          <img class="img-fluid" src="{%static 'hero-banner.png'%}" alt="Default image">
+          <img class="img-fluid" src="{%static '.img/hero-banner.png'%}" alt="Default image">
           <div class="hero-banner__content">
             <h3>Tours &amp; Travels</h3>
             <h1>Amazing Places on earth</h1>
@@ -133,7 +133,7 @@
                 {% if post.image_url %}
                 <img class="img-fluid" src="{{ post.image_url }}" alt="{{ post.title }}">
                 {% else %}
-                <img class="img-fluid" src="{%static 'blog.png'%}" alt="Default image">
+                <img class="img-fluid" src="{%static 'img/blog.png'%}" alt="Default image">
                 {% endif %}
                 <ul class="thumb-info" style="max-width: 550px;">
                   <li><a href="#"><i class="ti-user"></i>{{ post.author }}</a></li>
@@ -144,7 +144,7 @@
               <div class="details mt-20">
                 <h3>{{ post.title }}</h3>
                 <p>{{ post.text|truncatechars:200 }}</p>
-                <a class="button" href="{{ post.get_absolute_url }}">Read More <i class="ti-arrow-right"></i></a>
+                <a class="button" href="{% url 'post_detail' post.slug %}">Read More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           </div>

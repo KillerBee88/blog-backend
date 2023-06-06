@@ -12,7 +12,7 @@
           <h1>Blog details</h1>
           <nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Blog Details</li>
             </ol>
           </nav>
@@ -22,20 +22,18 @@
   </section>
   <!--================ Hero sm Banner end =================-->    
 
-
-  
-
   <!--================ Start Blog Post Area =================-->
   <section class="blog-post-area section-margin">
     <div class="container">
       <div class="row">
+        <!-- Main blog details -->
         <div class="col-lg-8">
           <div class="main_blog_details">
-          {% if post.image_url %}
-            <img class="img-fluid" src="{{ post.image_url }}" alt="{{ post.title }}">
-          {% else %}
-            <img class="img-fluid" src="{% static 'img/blog.png' %}" alt="Default image">
-          {% endif %}
+            {% if post.image_url %}
+              <img class="img-fluid" src="{{ post.image_url }}" alt="{{ post.title }}">
+            {% else %}
+              <img class="img-fluid" src="{% static 'img/blog.png' %}" alt="Default image">
+            {% endif %}
             <h4>{{ post.title }}</h4>
             <div class="user_details">
               <div class="mt-sm-0 mt-3">
@@ -59,34 +57,33 @@
               </div>
             </div>
           </div>
-          
 
           <div class="comments-area">
             {% if post.comments %}
-                <h4>{{ post.comments|length }} Comments</h4>
-                {% for comment in post.comments %}
-                  <div class="comment-list">
-                      <div class="single-comment justify-content-between d-flex">
-                          <div class="user justify-content-between d-flex">
-                              <div class="desc">
-                                  <h5>{{ comment.author }}</h5>
-                                  <p class="date">{{ comment.published_at }}</p>
-                                  <p class="comment">{{ comment.text }}</p>
-                              </div>
-                          </div>
-                          <div class="reply-btn">
-                              <a href="" class="btn-reply text-uppercase">reply</a>
+              <h4>{{ post.comments|length }} Comments</h4>
+              {% for comment in post.comments %}
+              <div class="comment-list">
+                  <div class="single-comment justify-content-between d-flex">
+                      <div class="user justify-content-between d-flex">
+                          <div class="desc">
+                              <h5>{{ comment.author }}</h5>
+                              <p class="date">{{ comment.published_at }}</p>
+                              <p class="comment">{{ comment.text }}</p>
                           </div>
                       </div>
+                      <div class="reply-btn">
+                          <a href="" class="btn-reply text-uppercase">reply</a>
+                      </div>
                   </div>
-                {% endfor %}
+              </div>
+              {% endfor %}
             {% else %}
-                <p>No comments yet.</p>
+              <p>No comments yet.</p>
             {% endif %}
+          </div>
         </div>
 
-
-        <!-- Start Blog Post Siddebar -->
+        <!-- Sidebar content -->
         <div class="col-lg-4 sidebar-widgets">
           <div class="widget-wrap">
             <div class="single-sidebar-widget newsletter-widget">
@@ -98,17 +95,15 @@
                 </div>
               </div>
               <button class="bbtns d-block mt-20 w-100">Subcribe</button>
-              </div>
-
+            </div>
 
             <div class="single-sidebar-widget post-category-widget">
               <h4 class="single-sidebar-widget" style="height:200px;">Здесь будет реклама</h4>
             </div>
           </div>
         </div>
-      <!-- End Blog Post Siddebar -->
+      </div>
     </div>
-  </div>
-</section>
+  </section>
   <!--================ End Blog Post Area =================-->
 {% endblock %}
